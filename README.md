@@ -1,6 +1,6 @@
 # Homologación XG-PON – Nokia XS-010X-Q | Coopelesca R.L.
 
-Sitio estático con los reportes de homologación del ONT Nokia XS-010X-Q generados por la Unidad de Ingeniería NOC del Departamento de Infocomunicaciones de Coopelesca R.L.
+Sitio estático con los reportes de homologación del ONT Nokia XS-010X-Q generados por la Unidad de Ingeniería del Departamento de Infocomunicaciones de Coopelesca R.L.
 
 ## Contenido
 
@@ -14,4 +14,4 @@ Sitio estático con los reportes de homologación del ONT Nokia XS-010X-Q genera
 Este repositorio está configurado como sitio estático mediante **GitHub Pages**.
 
 ---
-Coopelesca R.L. · Departamento de Infocomunicaciones · NOC Engineering
+Coopelesca R.L. · Departamento de Infocomunicaciones · Unidad de Ingenieria
