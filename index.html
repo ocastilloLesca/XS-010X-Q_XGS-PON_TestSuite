@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homologación XG-PON – Nokia XS-010X-Q | Coopelesca</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #00a8cc 0%, #0891b2 50%, #0e7490 100%);
+  min-height: 100vh;
+  padding: 30px 20px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header {
+  background: rgba(255,255,255,0.98);
+  border-radius: 20px;
+  padding: 35px 40px;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-bottom: 5px solid #00a8cc;
+}
+.logo {
+  font-size: 2.8em;
+  font-weight: 900;
+  color: #00a8cc;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,168,204,0.2);
+}
+.logo span { color: #0e7490; }
+.header h1 {
+  color: #0e7490;
+  font-size: 1.6em;
+  margin: 12px 0 6px;
+}
+.header h2 {
+  color: #0891b2;
+  font-size: 1.15em;
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 700;
+  margin: 4px;
+}
+.badge-blue {
+  background: linear-gradient(135deg, #00a8cc, #0e7490);
+}
+.meta {
+  margin-top: 14px;
+  font-size: 0.88em;
+  color: #64748b;
+}
+
+/* INFO CARDS */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.info-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+.info-card .icon { font-size: 2em; margin-bottom: 8px; }
+.info-card .label { font-size: 0.78em; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px; }
+.info-card .value { font-size: 1.2em; font-weight: 700; margin-top: 4px; }
+
+/* SECTION TITLE */
+.section-title {
+  color: white;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 25px 0 12px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 22px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+}
+
+/* REPORT CARDS */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  display: block;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.card-header {
+  background: linear-gradient(135deg, #00a8cc, #0e7490);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.card-speed {
+  font-size: 1.9em;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+.card-unit {
+  font-size: 0.7em;
+  color: rgba(255,255,255,0.8);
+  display: block;
+}
+.card-icon {
+  margin-left: auto;
+  font-size: 1.8em;
+  opacity: 0.7;
+}
+.card-body {
+  padding: 14px 20px 18px;
+}
+.card-body h3 {
+  color: #0e7490;
+  font-size: 0.95em;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card-body p {
+  color: #64748b;
+  font-size: 0.82em;
+  line-height: 1.5;
+}
+.card-footer {
+  background: #f0f9ff;
+  padding: 8px 20px;
+  font-size: 0.78em;
+  color: #0891b2;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* OTHER DOCS */
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.doc-card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 4px solid #00a8cc;
+}
+.doc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+.doc-icon { font-size: 2.2em; flex-shrink: 0; }
+.doc-info h3 { color: #0e7490; font-size: 0.97em; font-weight: 700; margin-bottom: 4px; }
+.doc-info p { color: #64748b; font-size: 0.8em; }
+
+/* SCRIPT CARD */
+.script-card { border-left-color: #f59e0b; }
+
+/* FOOTER */
+.footer {
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 18px 24px;
+  text-align: center;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85em;
+  margin-top: 10px;
+}
+.footer strong { color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">COOPE<span>LESCA</span></div>
+    <h1>Proyecto de Homologación XG-PON</h1>
+    <h2>ONT Nokia Modelo <strong>XS-010X-Q</strong> – Unidad de Ingeniería NOC</h2>
+    <span class="badge">✔ Homologación Completada</span>
+    <span class="badge badge-blue">📡 XG-PON / 10G-PON</span>
+    <div class="meta">Departamento de Infocomunicaciones · Coopelesca R.L. · Costa Rica</div>
+  </div>
+
+  <!-- INFO CARDS -->
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="icon">🔬</div>
+      <div class="label">Pruebas de Velocidad</div>
+      <div class="value">12 Reportes</div>
+    </div>
+    <div class="info-card">
+      <div class="icon">⚡</div>
+      <div class="label">Rango de Pruebas</div>
+      <div class="value">1 – 10 Gbps</div>
+    </div>
+    <div class="info-card">
+      <div class="icon">📡</div>
+      <div class="label">Tecnología</div>
+      <div class="value">XG-PON</div>
+    </div>
+    <div class="info-card">
+      <div class="icon">🗺️</div>
+      <div class="label">Documentos Adicionales</div>
+      <div class="value">Topología + QoS</div>
+    </div>
+  </div>
+
+  <!-- SPEED TEST REPORTS -->
+  <div class="section-title">📊 Reportes de Pruebas de Velocidad</div>
+  <div class="cards-grid">
+
+    <a class="card" href="Prueba_1_Giga_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">1</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 1 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_1_5_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">1.5</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 1.5 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_2_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">2</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 2 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_2_5_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">2.5</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 2.5 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_3_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">3</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 3 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_4_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">4</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 4 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_5_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">5</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 5 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_6_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">6</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 6 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_7_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">7</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 7 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_8_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">8</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 8 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_9_Gigas_test2.html">
+      <div class="card-header">
+        <div><div class="card-speed">9</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">📶</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 9 Gbps</h3>
+        <p>Reporte de rendimiento TCP/UDP con métricas de throughput, latencia y jitter.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+    <a class="card" href="Prueba_10_Giga_test2.html">
+      <div class="card-header" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+        <div><div class="card-speed">10</div><span class="card-unit">Gbps</span></div>
+        <div class="card-icon">🏆</div>
+      </div>
+      <div class="card-body">
+        <h3>Prueba 10 Gbps – Máxima Capacidad</h3>
+        <p>Reporte de rendimiento máximo del ONT XS-010X-Q en escenario de carga total.</p>
+      </div>
+      <div class="card-footer">📄 Ver reporte →</div>
+    </a>
+
+  </div>
+
+  <!-- OTHER DOCUMENTS -->
+  <div class="section-title">📁 Documentación Adicional</div>
+  <div class="docs-grid">
+
+    <a class="doc-card" href="topologia_1.png" target="_blank">
+      <div class="doc-icon">🗺️</div>
+      <div class="doc-info">
+        <h3>Diagrama de Red XG-PON</h3>
+        <p>Topología de red para la homologación del ONT XS-010X-Q</p>
+      </div>
+    </a>
+
+    <a class="doc-card" href="Qos_profiles_tabla.html">
+      <div class="doc-icon">⚙️</div>
+      <div class="doc-info">
+        <h3>Perfiles QoS</h3>
+        <p>Tabla de perfiles de Calidad de Servicio – Unidad de Ingeniería</p>
+      </div>
+    </a>
+
+    <a class="doc-card script-card" href="script_de_la_prueba_de_velocidad.txt">
+      <div class="doc-icon">📝</div>
+      <div class="doc-info">
+        <h3>Script de Prueba de Velocidad</h3>
+        <p>Script bash utilizado para ejecutar las pruebas de rendimiento iperf3</p>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Coopelesca R.L.</strong> · Departamento de Infocomunicaciones · Unidad de Ingeniería NOC<br>
+    Proyecto Homologación XG-PON – ONT Nokia XS-010X-Q · Costa Rica
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Perfiles QoS – Coopelesca Unidad de Ingenieria</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #00a8cc 0%, #0891b2 50%, #0e7490 100%);
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-bottom: 4px solid #00a8cc;
+    border-radius: 15px;
+    padding: 30px;
+  }
+  .coopelesca-logo {
+    color: #00a8cc;
+    font-size: 2.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,168,204,0.3);
+  }
+  .header h1 {
+    color: #0e7490;
+    font-size: 1.6em;
+    margin-bottom: 5px;
+  }
+  .header h2 {
+    color: #0891b2;
+    font-size: 1.15em;
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+
+  /* Table wrapper */
+  .data-table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .table-header {
+    background: linear-gradient(135deg, #00a8cc 0%, #0891b2 100%);
+    color: white;
+    padding: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .table-content { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    background: linear-gradient(135deg, #00a8cc 0%, #0891b2 100%);
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95em;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid #e0f2fe;
+  }
+
+  td {
+    padding: 11px 16px;
+    text-align: center;
+    border-bottom: 1px solid #e0f2fe;
+    color: #0e7490;
+    font-size: 0.92em;
+  }
+
+  td.rate {
+    font-weight: bold;
+    font-size: 1em;
+    color: #0891b2;
+    border-right: 2px solid #e0f2fe;
+    white-space: nowrap;
+    background: #f0f9ff;
+  }
+
+  /* DL / UL row tones */
+  tr.dl { background: #ffffff; }
+  tr.ul { background: #f8fdff; }
+  tr:hover td { background: #f0f9ff; }
+
+  /* Direction badges */
+  .badge-dir {
+    display: inline-block;
+    font-size: 0.82em;
+    font-weight: bold;
+    padding: 3px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .badge-dl {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+  }
+  .badge-ul {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+  }
+
+  /* Command cell */
+  td.cmd {
+    text-align: left;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.82em;
+    color: #0e7490;
+    white-space: nowrap;
+  }
+  td.cmd .kw   { color: #0891b2; font-weight: 600; }
+  td.cmd .prof { color: #d97706; font-weight: 600; }
+  td.cmd .num  { color: #0e7490; font-weight: bold; }
+  td.cmd .flag { color: #0891b2; }
+
+  /* Separator between rate groups */
+  tr.dl td { border-top: 2px solid #e0f2fe; }
+
+  /* Footer */
+  .footer {
+    margin-top: 35px;
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="coopelesca-logo">🌐 COOPELESCA R.L.</div>
+    <h1>Proyecto Homologación X-GPON — ONT Nokia Modelo XS-010X-Q</h1>
+    <h2>Comandos de Configuración de Perfiles de Velocidad QoS</h2>
+  </div>
+
+  <div class="data-table">
+    <div class="table-header">📋 Perfiles de Velocidad</div>
+    <div class="table-content">
+      <table>
+        <thead>
+          <tr>
+            <th>Tasa</th>
+            <th>Sentido</th>
+            <th>Comando de Configuración de Perfil de Velocidad</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- 1 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">1 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_1G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">1200</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_1G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">1200</span> <span class="flag">assured-info-rate</span> <span class="num">1200</span> <span class="flag">excessive-info-rate</span> <span class="num">1200000</span></td>
+          </tr>
+
+          <!-- 1.5 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">1.5 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_1_5G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">1700</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_1_5G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">1700</span> <span class="flag">assured-info-rate</span> <span class="num">1700</span> <span class="flag">excessive-info-rate</span> <span class="num">1700000</span></td>
+          </tr>
+
+          <!-- 2 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">2 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_2G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">2200</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_2G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">2200</span> <span class="flag">assured-info-rate</span> <span class="num">2200</span> <span class="flag">excessive-info-rate</span> <span class="num">2200000</span></td>
+          </tr>
+
+          <!-- 2.5 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">2.5 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_2_5G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">2900</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_2_5G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">2900</span> <span class="flag">assured-info-rate</span> <span class="num">2900</span> <span class="flag">excessive-info-rate</span> <span class="num">2900000</span></td>
+          </tr>
+
+          <!-- 3 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">3 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_3G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">3200</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_3G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">3200</span> <span class="flag">assured-info-rate</span> <span class="num">3200</span> <span class="flag">excessive-info-rate</span> <span class="num">3200000</span></td>
+          </tr>
+
+          <!-- 4 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">4 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_4G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">4400</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_4G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">4400</span> <span class="flag">assured-info-rate</span> <span class="num">4400</span> <span class="flag">excessive-info-rate</span> <span class="num">4400000</span></td>
+          </tr>
+
+          <!-- 5 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">5 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_5G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">5600</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_5G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">5600</span> <span class="flag">assured-info-rate</span> <span class="num">5600</span> <span class="flag">excessive-info-rate</span> <span class="num">5600000</span></td>
+          </tr>
+
+          <!-- 6 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">6 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_6G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">6600</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_6G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">6600</span> <span class="flag">assured-info-rate</span> <span class="num">6600</span> <span class="flag">excessive-info-rate</span> <span class="num">6600000</span></td>
+          </tr>
+
+          <!-- 7 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">7 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_7G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">7600</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_7G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">7600</span> <span class="flag">assured-info-rate</span> <span class="num">7600</span> <span class="flag">excessive-info-rate</span> <span class="num">7600000</span></td>
+          </tr>
+
+          <!-- 8 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">8 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_8G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">8765</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_8G_UP_teste</span> <span class="flag">committed-info-rate</span> <span class="num">8765</span> <span class="flag">assured-info-rate</span> <span class="num">8765</span> <span class="flag">excessive-info-rate</span> <span class="num">8765440</span></td>
+          </tr>
+
+          <!-- 9 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">9 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_9G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">9600</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_9G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">9600</span> <span class="flag">assured-info-rate</span> <span class="num">9600</span> <span class="flag">excessive-info-rate</span> <span class="num">9600000</span></td>
+          </tr>
+
+          <!-- 10 GbE -->
+          <tr class="dl">
+            <td class="rate" rowspan="2">10 GbE</td>
+            <td><span class="badge-dir badge-dl">DL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles shaper</span> <span class="prof">BP_10G_DOWN_test2</span> <span class="flag">committed-info-rate</span> <span class="num">10700</span> <span class="flag">committed-burst-size</span> <span class="num">0</span></td>
+          </tr>
+          <tr class="ul">
+            <td><span class="badge-dir badge-ul">UL</span></td>
+            <td class="cmd"><span class="kw">configure qos profiles bandwidth</span> <span class="prof">BP_10G_UP_test2</span> <span class="flag">committed-info-rate</span> <span class="num">10700</span> <span class="flag">assured-info-rate</span> <span class="num">10700</span> <span class="flag">excessive-info-rate</span> <span class="num">10700000</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER PERSONALIZADO -->
+<div style="margin-top: 35px; text-align: center; color: white; font-size: 1.2rem; line-height: 1.6;">
+  <div><strong>Coopelesca - TV Internet</strong></div>
+  <div>Proyecto Homologacion X-GPON </div>
+  <div>2026 - Todos los derechos reservados</div>
+</div>
+
+</body>
+</html>
